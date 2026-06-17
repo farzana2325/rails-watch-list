@@ -7,10 +7,13 @@
   <% @lists.each do |list| %>
     <div class="col-md-4 mb-3">
       <div class="card h-100">
+        <% if list.cover.attached? %>
+          <%= image_tag list.cover, class: "card-img-top", style: "height: 180px; object-fit: cover;" %>
+        <% end %>
         <div class="card-body">
           <h5 class="card-title"><%= list.name %></h5>
           <p class="card-text text-muted"><%= pluralize(list.movies.count, "film") %></p>
-          <%= link_to "Voir la liste", list_path(list), class: "btn btn-outline-primary" %>
+            <%= link_to "Voir la liste", list_path(list), class: "btn btn-outline-primary" %>
         </div>
       </div>
     </div>
